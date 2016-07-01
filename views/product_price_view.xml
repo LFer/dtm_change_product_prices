@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record id="product_price_form_view" model="ir.ui.view">
+            <field name="name">product.price.form.view</field>
+            <field name="model">product.price</field>
+            <field name="arch" type="xml">
+                <form string="Changue Product Prices">
+                    <sheet>
+                        <separator string="Reajuste de Precios"/>
+                        <group>
+                            <field name="no_stock" string = "Reajustar Productos sin Stock"/>
+                        </group>
+                        <separator string="Seleccionar Productos" attrs="{'invisible': [('no_stock','=',True)]}"/>
+                        <field name="products_ids" options="{'no_create': True, 'no_create_edit': True}" attrs="{'invisible': [('no_stock','=',True)]}">
+                        </field>
+                            <label for="nuevo_precio"/>
+                            <field name="nuevo_precio"/>
+                            <button class="oe_stat_button"
+                                    type="object"
+                                    icon="fa-cogs"
+                                    name="cambiar_precio"
+                                    string="Cambiar Precios"
+                                    help="Cambiar Precios" >
+                            </button>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="product_price_tree_view" model="ir.ui.view">
+            <field name="name">product.price.tree.view</field>
+            <field name="model">product.price</field>
+            <field name="arch" type="xml">
+                <tree string="Changue Product Prices">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="product_price_action" model="ir.actions.act_window">
+            <field name="name">Changue Product Prices</field>
+            <field name="res_model">product.price</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+
+        <menuitem id="product_price_menu"
+                  name="Changue Product Prices"
+                  parent="stock.menu_product_in_config_stock"
+                  action="product_price_action"/>
+
+    </data>
+</openerp>
