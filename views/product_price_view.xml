@@ -10,13 +10,16 @@
                     <sheet>
                         <separator string="Reajuste de Precios"/>
                         <group>
-                            <field name="no_stock" string = "Reajustar Productos sin Stock"/>
+                            <field name="tipo_ajuste" style="width: 20%%"/>
+                            <field name="no_stock" string="Reajustar Productos sin Stock"/>
+                            <field name="precio_venta" />
+                            <field name="precio_costo"/>
+                            <field name="porcentaje"  class="oe_inline"  string="Porcentaje de ajuste" attrs="{'invisible': [('tipo_ajuste','=','manual')]}"/>
+                            <field name="nuevo_precio" attrs="{'invisible': [('tipo_ajuste','=','porcentaje')]}"/>
                         </group>
                         <separator string="Seleccionar Productos" attrs="{'invisible': [('no_stock','=',True)]}"/>
                         <field name="products_ids" options="{'no_create': True, 'no_create_edit': True}" attrs="{'invisible': [('no_stock','=',True)]}">
                         </field>
-                            <label for="nuevo_precio"/>
-                            <field name="nuevo_precio"/>
                             <button class="oe_stat_button"
                                     type="object"
                                     icon="fa-cogs"
