@@ -1,4 +1,7 @@
 *.pyc
+<<<<<<< HEAD
 *.swp
 *.idea
 *.orig
+=======
+>>>>>>> c0eb0273cb1449b6f3d2025a5f93239db51d2027
